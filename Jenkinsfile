@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python.py'
+                sh ' python3 python.py'
                 echo 'Building the app...'
                
             }
