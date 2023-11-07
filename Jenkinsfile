@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                echo "Building the app..."
                 sh "python.py"
+                echo "Building the app..."
+               
             }
         }
         stage("Test") {
