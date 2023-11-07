@@ -5,7 +5,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Building the app..."
-                circle.py
+                python circle.py
             }
         }
         stage("Test") {
