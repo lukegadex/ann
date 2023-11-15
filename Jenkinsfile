@@ -2,30 +2,36 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                 git branch: 'main', url: 'https://github.com/jasminejack12345/ann.git'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jasminejack12345/ann.git']])
+            }
+        }
+         stage('Build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/jasminejack12345/ann.git'
                 sh 'python3 trial.py'
             }
         }
          stage('Test') {
             steps {
-                  sh 'python3 -m trial'
+                 sh 'python3 -m trial'
             }
         }
          stage('Deploy') {
             steps {
                 sh 'python3 -m trial'
-                echo 'Deploying the code'
+                echo 'Deploy code'
             }
-        }  
+        }
     }
     post {
         success {
-            mail bcc: '', body: 'Build success.', cc: '', from: 'admin@jenkins', replyTo: 'jasmineejack@gmail.com', subject: 'Jenkins Pipeline', to: 'anneludemejay@gmail.com,lukegadebo,jahno743@gmail.com,blaisekilang@gmail.com'
-          }
+               mail bcc: '', body: '''Build has been successful. Refer to the link for an insight 
+                    https://github.com/jasminejack12345/ann.git''', cc: '', from: '', replyTo: '', subject: 'CI/CD Pipeline', to: 'jasmineejack@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'          
+        }
         failure {
-               mail bcc: '', body: 'The pipeline failed.', cc: '', from: '', replyTo: '', subject: 'Jenkins pipeline error', to: 'jasmineejack@gmail.com,lukegadebo@gmail.com,blaisekilang4@gmail.com,jahno743@gmail.com'
-            }
-    } 
+            mail bcc: '', body: 'Build has failed. Refer to this link to resolve ---->> https://github.com/jasminejack12345/ann.git', cc: '', from: '', replyTo: '', subject: 'Pipeline Error', to: 'jasmineejack@gmail.com, blaisekilang4@gmail.com,lukegadebo@gmail.com, jahno743@gmail.com'
+           }
+       }
 }
