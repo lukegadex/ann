@@ -1,23 +1,29 @@
 pipeline {
     agent any
 
-    stages {
+    stages
+    {
         stage('Build') {
             steps {
-                sh ' python3 python.py'
-                echo 'Building the app...'
-               
+                git branch: 'main', url: 'https://github.com/jasminejack12345/ann.git'
+                sh 'python3 trial.py'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing the app...'
+                sh 'python3 -m trial'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying the app...'
-            }
-        }
+                sh 'python3 -m trial'
+                echo 'Deploying to test'
+            }              
+        }    
     }
+    post {
+        failure {
+               mail bcc: '', body: 'Jenkins alert', cc: '', from: '', replyTo: '', subject: 'Pipeline failed', to: 'jasmineejack@gmail.com'           
+              }
+         }
 }
