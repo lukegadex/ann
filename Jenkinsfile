@@ -1,4 +1,5 @@
-pipeline {
+
+   pipeline {
     agent any
 
     stages {
@@ -31,7 +32,7 @@ pipeline {
                     https://github.com/jasminejack12345/ann.git''', cc: '', from: '', replyTo: '', subject: 'CI/CD Pipeline', to: 'jasmineejack@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'          
         }
         failure {
-            mail bcc: '', body: 'Build has failed. Refer to this link to resolve ---->> https://github.com/jasminejack12345/ann.git', cc: '', from: '', replyTo: '', subject: 'Pipeline Error', to: 'jasmineejack@gmail.com, blaisekilang4@gmail.com,lukegadebo@gmail.com, jahno743@gmail.com'
+            mail bcc: '', body: 'For more infor on the pipeline failure, checkout the console output at {env.BUILD_URL}', cc: '', from: '', replyTo: '', subject: '${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} has failed,', to: 'anneludemejay@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'
            }
        }
-}
+}         
