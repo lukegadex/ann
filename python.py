@@ -15,7 +15,7 @@ class Circle:
 
 
 users_choice = int(input("Enter 1 to calculate AREA\nEnter 2 to calculate CIRCUMFERENCE\nEnter here "))
-if users_choice == 1:
+if users_choice = 1:
     r = int(input("Enter radius in cm: ")) 
     
     area_Obj = Circle(r) 
