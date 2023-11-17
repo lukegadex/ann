@@ -32,7 +32,7 @@
                     https://github.com/jasminejack12345/ann.git''', cc: '', from: '', replyTo: '', subject: 'CI/CD Pipeline', to: 'jasmineejack@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'          
         }
         failure {
-            mail bcc: '', body: 'For more infor on the pipeline failure, checkout the console output at http://localhost:8080/job/CI_CD_Pipeline/6/console', cc: '', from: '', replyTo: '', subject: 'CI/CD pipeline Build has failed,', to: 'anneludemejay@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'
+            mail bcc: '', body: 'For more infor on the pipeline failure, checkout the console output at https://github.com/jasminejack12345/ann.git', cc: '', from: '', replyTo: '', subject: 'CI/CD pipeline Build has failed,', to: 'anneludemejay@gmail.com, jahno743@gmail.com, blaisekilang4@gmail.com, lukegadebo@gmail.com'
            }
        }
 }         
